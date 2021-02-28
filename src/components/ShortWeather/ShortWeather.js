@@ -2,6 +2,9 @@ import React from 'react';
 
 import { useSelector } from 'react-redux';
 
+// styling
+import './ShortWeather.css';
+
 const toCelcius = kelvin => {
   return kelvin - 273.15;
 };
@@ -28,10 +31,11 @@ function ShortWeather() {
 
   return (
     <section className="short-weather">
-      <p>{weather.name}</p>
+      <p className="short-temp">{Math.round(toCelcius(weather.main.temp))}℃</p>
+
       <div>
-        <p>{Math.round(toCelcius(weather.main.temp))} ℃</p>
-        <p>{`${date.getDate()} ${
+        <p className="short-name">{weather.name}</p>
+        <p className="short-date">{`${date.getDate()} ${
           months[date.getMonth()]
         }, ${date.getFullYear()}`}</p>
       </div>
@@ -42,8 +46,9 @@ function ShortWeather() {
               .default
           }
           alt="icon"
+          className="short-icon"
         />
-        <p>{weather.weather[0].main}</p>
+        <p className="short-main">{weather.weather[0].main}</p>
       </div>
     </section>
   );
