@@ -1,11 +1,11 @@
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux';
 
 const weatherReducer = (state, action) => {
-  if (typeof state === "undefined") {
+  if (typeof state === 'undefined') {
     return null;
   }
 
-  if (action.type === "SET_WEATHER") {
+  if (action.type === 'SET_WEATHER') {
     return action.payload;
   } else {
     return state;
@@ -14,7 +14,7 @@ const weatherReducer = (state, action) => {
 
 const locationReducer = (state = { lat: 41.7166, lon: 44.7833 }, action) => {
   switch (action.type) {
-    case "SET_LOCATION":
+    case 'SET_LOCATION':
       return {
         lat: action.payload.lat,
         lon: action.payload.lon,
@@ -24,9 +24,21 @@ const locationReducer = (state = { lat: 41.7166, lon: 44.7833 }, action) => {
   }
 };
 
+const menuReducer = (state = true, action) => {
+  switch (action.type) {
+    case 'OPEN_MENU':
+      return true;
+    case 'CLOSE_MENU':
+      return false;
+    default:
+      return state;
+  }
+};
+
 const reducer = combineReducers({
   weather: weatherReducer,
   location: locationReducer,
+  isMenuOpened: menuReducer,
 });
 
 export default reducer;

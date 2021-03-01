@@ -1,15 +1,13 @@
 .short-weather {
-  align-self: flex-end;
-
   display: flex;
-  flex: row wrap;
   align-items: center;
-  width: 100%;
 
   font-size: 2.5rem;
-  padding: 1rem;
-  margin-bottom: 2rem;
-  margin-left: 3rem;
+  position: absolute;
+  z-index: 10;
+  bottom: 0;
+  left: 0;
+  margin: 3rem;
 }
 
 .short-weather > * {

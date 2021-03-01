@@ -1,0 +1,62 @@
+.cities-menu {
+  position: absolute;
+
+  width: 50%;
+  height: 50%;
+  z-index: 40;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  border-radius: 3rem;
+  transition: all 0.3s ease-in;
+  background-color: rgba(3, 3, 3, 0.048);
+}
+
+.hide-menu {
+  visibility: hidden;
+}
+
+.show-menu {
+  animation-name: show-menu-animation;
+  animation-duration: 0.4s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+}
+@keyframes show-menu-animation {
+  0% {
+    visibility: visible;
+  }
+
+  100% {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.788);
+    border-radius: 0;
+  }
+}
+
+.city-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 5px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.city-container p {
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 3rem;
+  padding: 1.2rem 2rem;
+
+  box-shadow: 0 1rem 1.2rem rgba(0, 0, 0, 0.226);
+}
+
+.close-btn {
+  position: absolute;
+  top: 3rem;
+  right: 3rem;
+  font-size: 3.5rem;
+  cursor: pointer;
+}

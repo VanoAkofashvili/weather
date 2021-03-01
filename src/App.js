@@ -75,7 +75,7 @@ function App() {
   const headerStyles = {
     background: `linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.15)), url("${bg}") no-repeat center center/cover`,
     height: '100vh',
-    display: 'flex',
+    position: 'relative',
   };
 
   return (
