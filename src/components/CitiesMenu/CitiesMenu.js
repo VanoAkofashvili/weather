@@ -1,15 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { AiOutlineCloseCircle as CloseBtn } from 'react-icons/ai';
 import './CitiesMenu.css';
 
 // redux
 import { useDispatch } from 'react-redux';
-import { closeMenu, setLocation } from '../../actions';
+import { closeMenu, setLoading, setLocation } from '../../actions';
 
 import { cities } from '../../cities';
 
 const CitiesMenu = ({ show }) => {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const eventHandler = e => {
+      if (e.key == 'Escape') {
+        dispatch(closeMenu());
+      }
+    };
+
+    document.addEventListener('keydown', eventHandler);
+
+    return () => {
+      document.removeEventListener('keydown', eventHandler);
+    };
+  }, []);
 
   return (
     <section
