@@ -11,7 +11,9 @@ import Clouds from './assets/images/weather/Clouds.png';
 import Rain from './assets/images/weather/Rain.jpg';
 import Snow from './assets/images/weather/Snow.jpg';
 
+// Components
 import ShortWeather from './components/ShortWeather/ShortWeather';
+import Cities from './components/Cities/Cities';
 
 function App() {
   const dispatch = useDispatch();
@@ -79,6 +81,7 @@ function App() {
   return (
     <div className="App">
       <header style={headerStyles}>
+        <Cities />
         <ShortWeather />
       </header>
     </div>
