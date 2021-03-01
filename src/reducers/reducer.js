@@ -35,10 +35,18 @@ const menuReducer = (state = true, action) => {
   }
 };
 
+const loadingReducer = (state = false, action) => {
+  if (action.type === 'SET_LOADING') {
+    return action.payload;
+  }
+  return state;
+};
+
 const reducer = combineReducers({
   weather: weatherReducer,
   location: locationReducer,
   isMenuOpened: menuReducer,
+  isLoading: loadingReducer,
 });
 
 export default reducer;

@@ -4,7 +4,9 @@ import './CitiesMenu.css';
 
 // redux
 import { useDispatch } from 'react-redux';
-import { closeMenu } from '../../actions';
+import { closeMenu, setLocation } from '../../actions';
+
+import { cities } from '../../cities';
 
 const CitiesMenu = ({ show }) => {
   const dispatch = useDispatch();
@@ -14,18 +16,25 @@ const CitiesMenu = ({ show }) => {
       className={`cities-menu ${show ? 'show-menu' : 'hide-menu'} flex jsc alc`}
     >
       <div className="city-container">
-        <p>Gori</p>
-        <p>Gori</p>
-        <p>Gori</p>
-        <p>Gori</p>
-        <p>Gori</p>
-        <p>Gori</p>
-        <p>Gori</p>
-        <p>Gori</p>
-        <p>Gori</p>
-        <p>Gori</p>
-        <p>Gori</p>
-        <p>Gori</p>
+        {cities.map((el, i) => {
+          return (
+            <p
+              key={i}
+              onClick={() => {
+                const [lat, lon] = el.location.split(',');
+                dispatch(
+                  setLocation(
+                    parseFloat((+lat).toFixed(4)),
+                    parseFloat(+lon).toFixed(4)
+                  )
+                );
+                dispatch(closeMenu());
+              }}
+            >
+              {el.name_en}
+            </p>
+          );
+        })}
       </div>
 
       <CloseBtn className="close-btn" onClick={() => dispatch(closeMenu())} />

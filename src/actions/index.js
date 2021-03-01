@@ -26,3 +26,10 @@ export const closeMenu = () => {
     type: 'CLOSE_MENU',
   };
 };
+
+export const setLoading = isLoading => {
+  return {
+    type: 'SET_LOADING',
+    payload: isLoading,
+  };
+};

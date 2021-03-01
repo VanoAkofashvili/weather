@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import axios from './axios/axios';
 
-import { setWeather, setLocation } from './actions';
+import { setWeather, setLocation, setLoading } from './actions';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -14,11 +14,13 @@ import Snow from './assets/images/weather/Snow.jpg';
 // Components
 import ShortWeather from './components/ShortWeather/ShortWeather';
 import Cities from './components/Cities/Cities';
+import { Spinner } from './components/Spinner/Spinner';
 
 function App() {
   const dispatch = useDispatch();
   const location = useSelector(bigState => bigState.location);
   const weather = useSelector(bigState => bigState.weather);
+  const isLoading = useSelector(state => state.isLoading);
 
   useEffect(() => {
     // check if geolocation is available
@@ -40,6 +42,7 @@ function App() {
   }, []);
 
   useEffect(() => {
+    dispatch(setLoading(true));
     axios
       .get(
         `weather?lat=${location.lat}&lon=${location.lon}&appid=${process.env.REACT_APP_API_KEY}`
@@ -47,6 +50,11 @@ function App() {
       .then(data => {
         console.log(data.data);
         dispatch(setWeather(data.data));
+        dispatch(setLoading(false));
+      })
+      .catch(error => {
+        console.log(error);
+        dispatch(setLoading(false));
       });
   }, [location]);
 
@@ -81,6 +89,7 @@ function App() {
   return (
     <div className="App">
       <header style={headerStyles}>
+        {isLoading ? <Spinner /> : null}
         <Cities />
         <ShortWeather />
       </header>
