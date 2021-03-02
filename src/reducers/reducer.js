@@ -42,11 +42,23 @@ const loadingReducer = (state = false, action) => {
   return state;
 };
 
+const searchReducer = (state = false, action) => {
+  switch (action.type) {
+    case 'OPEN_SEARCH':
+      return true;
+    case 'CLOSE_SEARCH':
+      return false;
+    default:
+      return state;
+  }
+};
+
 const reducer = combineReducers({
   weather: weatherReducer,
   location: locationReducer,
   isMenuOpened: menuReducer,
   isLoading: loadingReducer,
+  isSearchOpen: searchReducer,
 });
 
 export default reducer;
