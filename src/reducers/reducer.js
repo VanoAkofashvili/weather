@@ -24,7 +24,7 @@ const locationReducer = (state = { lat: 41.7166, lon: 44.7833 }, action) => {
   }
 };
 
-const menuReducer = (state = true, action) => {
+const menuReducer = (state = false, action) => {
   switch (action.type) {
     case 'OPEN_MENU':
       return true;

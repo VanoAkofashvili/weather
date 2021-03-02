@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 // backgrounds
 import Clear from './assets/images/weather/Clear.png';
 import Clouds from './assets/images/weather/Clouds.png';
+import Clouds2 from './assets/images/weather/Clouds2.jpeg';
 import Rain from './assets/images/weather/Rain.jpg';
 import Snow from './assets/images/weather/Snow.jpg';
 
@@ -70,7 +71,7 @@ function App() {
       bg = Rain;
       break;
     case 'Clouds':
-      bg = Clouds;
+      bg = Math.random() < 0.5 ? Clouds : Clouds2;
       break;
     case 'Clear':
       bg = Clear;
