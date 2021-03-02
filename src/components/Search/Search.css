@@ -1,13 +1,14 @@
-.toggle {
-  padding: 1.3rem;
-  display: inline-block;
+.search {
+  position: absolute;
+  top: 1.3rem;
+  right: 1.3rem;
 }
 
-.toggle-btn {
+.search-btn {
   display: block;
 }
 
-.toggle-text {
+.search-text {
   opacity: 0;
   transition: all 0.3s ease-in-out;
   background: rgba(0, 0, 0, 0.3);
@@ -19,18 +20,28 @@
   font-size: 1.6rem;
 }
 
-.toggle-text:before {
+.search-btn:hover + .search-text {
+  opacity: 1;
+}
+
+.search-text:before {
   content: '';
   position: absolute;
   width: 0;
   height: 0;
   bottom: 100%;
+  right: 15%;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
 
   border-bottom: 5px solid rgba(0, 0, 0, 0.3);
 }
 
-.toggle-btn:hover + .toggle-text {
-  opacity: 1;
+.search-input {
+  padding: 1rem 2.2rem;
+  border-radius: 1.5rem;
+  outline: none;
+  border: none;
+  width: 50px;
+  /* opacity: 0; */
 }

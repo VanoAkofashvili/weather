@@ -1,7 +1,7 @@
 .lds-ellipsis {
   position: fixed;
   z-index: 999;
-  height: 2em;
+  height: 12em;
   width: 2em;
   overflow: show;
   margin: auto;

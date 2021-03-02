@@ -25,7 +25,7 @@ function Cities() {
     <div className="cities">
       <div className="toggle">
         <RiMenu2Line
-          className="toggle-btn"
+          className="toggle-btn btn"
           onClick={() => dispath(openMenu())}
         />
         <span className="toggle-text">ქალაქის არჩევა</span>

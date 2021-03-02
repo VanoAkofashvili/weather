@@ -16,6 +16,7 @@ import Snow from './assets/images/weather/Snow.jpg';
 import ShortWeather from './components/ShortWeather/ShortWeather';
 import Cities from './components/Cities/Cities';
 import { Spinner } from './components/Spinner/Spinner';
+import Search from './components/Search/Search';
 
 function App() {
   const dispatch = useDispatch();
@@ -92,6 +93,7 @@ function App() {
       <header style={headerStyles}>
         {isLoading ? <Spinner /> : null}
         <Cities />
+        <Search />
         <ShortWeather />
       </header>
     </div>

@@ -6,6 +6,14 @@
   justify-content: center;
 }
 
-.alc {
+.aife {
+  align-items: flex-end;
+}
+
+.aic {
   align-items: center;
+}
+
+.fdc {
+  flex-direction: column;
 }

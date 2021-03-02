@@ -27,7 +27,7 @@ const CitiesMenu = ({ show }) => {
 
   return (
     <section
-      className={`cities-menu ${show ? 'show-menu' : 'hide-menu'} flex jsc alc`}
+      className={`cities-menu ${show ? 'show-menu' : 'hide-menu'} flex jsc aic`}
     >
       <div className="city-container">
         {cities.map((el, i) => {
