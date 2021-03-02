@@ -23,6 +23,7 @@ function App() {
   const location = useSelector(bigState => bigState.location);
   const weather = useSelector(bigState => bigState.weather);
   const isLoading = useSelector(state => state.isLoading);
+  const city = useSelector(state => state.city);
 
   useEffect(() => {
     // check if geolocation is available
@@ -45,10 +46,14 @@ function App() {
 
   useEffect(() => {
     dispatch(setLoading(true));
+    let url;
+    if (city) {
+      url = `weather?q=${city}&appid=${process.env.REACT_APP_API_KEY}`;
+    } else if (location) {
+      url = `weather?lat=${location.lat}&lon=${location.lon}&appid=${process.env.REACT_APP_API_KEY}`;
+    }
     axios
-      .get(
-        `weather?lat=${location.lat}&lon=${location.lon}&appid=${process.env.REACT_APP_API_KEY}`
-      )
+      .get(url)
       .then(data => {
         console.log(data.data);
         dispatch(setWeather(data.data));
@@ -58,7 +63,7 @@ function App() {
         console.log(error);
         dispatch(setLoading(false));
       });
-  }, [location]);
+  }, [location, city]);
 
   if (!weather) {
     return 'TEXT';

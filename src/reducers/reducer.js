@@ -24,6 +24,14 @@ const locationReducer = (state = { lat: 41.7166, lon: 44.7833 }, action) => {
   }
 };
 
+const cityReducer = (state = null, action) => {
+  if (action.type === 'SET_CITY') {
+    console.log(action.payload);
+    return action.payload;
+  }
+  return state;
+};
+
 const menuReducer = (state = false, action) => {
   switch (action.type) {
     case 'OPEN_MENU':
@@ -59,6 +67,7 @@ const reducer = combineReducers({
   isMenuOpened: menuReducer,
   isLoading: loadingReducer,
   isSearchOpen: searchReducer,
+  city: cityReducer,
 });
 
 export default reducer;

@@ -4,12 +4,7 @@ import './Search.css';
 
 // redux
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  closeSearch,
-  openSearch,
-  setLoading,
-  setLocation,
-} from '../../actions';
+import { closeSearch, openSearch, setCity } from '../../actions';
 
 const Search = () => {
   const isSearchOpen = useSelector(state => state.isSearchOpen);
@@ -33,6 +28,12 @@ const Search = () => {
     inputRef.current.focus();
   }, [isSearchOpen]);
 
+  const keyHandler = e => {
+    if (e.key === 'Enter') {
+      dispatch(setCity(inputRef.current.value));
+    }
+  };
+
   return (
     <div className="search flex fdc aife">
       <IoSearchCircleOutline
@@ -49,6 +50,7 @@ const Search = () => {
           isSearchOpen ? 'search-input__open' : 'search-input__close'
         }`}
         ref={inputRef}
+        onKeyDown={keyHandler}
       />
     </div>
   );

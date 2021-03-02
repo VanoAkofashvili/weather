@@ -15,6 +15,14 @@ export const setLocation = (lat, lon) => {
   };
 };
 
+export const setCity = city => {
+  console.log(city);
+  return {
+    type: 'SET_CITY',
+    payload: city,
+  };
+};
+
 export const openMenu = () => {
   return {
     type: 'OPEN_MENU',
